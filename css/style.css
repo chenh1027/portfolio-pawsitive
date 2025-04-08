@@ -1,0 +1,752 @@
+/* 第二步：通用样式 Global Styles */
+html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color-normal);
+  line-height: 1.5;
+  background-color: var(--background-color);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-family);
+  font-weight: bold;
+  /* margin-top: 1.5em; */
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem); /* 32px - 48px */
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem); /* 28px - 40px */
+}
+
+h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem); /* 24px - 32px */
+}
+
+h4 {
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem); /* 20px - 28px */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  /* object-fit: cover; s  */
+}
+a {
+  color: inherit; /* 继承父元素颜色 */
+  text-decoration: none; /* 去掉下划线 */
+}
+
+:root {
+  --color-orange: #fdb66e;
+  --color-blue: #cbe5f3;
+  --color-yellow: #f9e282;
+  --color-green: #c9f0d1;
+  --color-accent: #00c1a2;
+  --color-accent-hover: #00a98e;
+  --color-dark: #2c3e50;
+  --color-dark-hover: #1a252f;
+
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+}
+
+.visually-hidden-focusable {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.visually-hidden-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #000;
+  z-index: 1000;
+}
+
+.hero-section {
+  background-image: url("/images/Herro\ Banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.small-text {
+  font-size: 0.8rem;
+}
+
+.img-card-icon {
+  max-height: 100%;
+  max-width: 50%;
+  object-fit: contain;
+}
+
+.animal-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-orange {
+  background-color: var(--color-orange);
+}
+
+.bg-blue {
+  background-color: var(--color-blue);
+}
+
+.bg-yellow {
+  background-color: var(--color-yellow);
+}
+
+.bg-green {
+  background-color: var(--color-green);
+}
+.animal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.animal-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animal-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.animal-label {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.page-item.active .page-link {
+  background-color: #0f2b46; /* 深蓝 */
+  border-color: #0f2b46;
+  color: #fff;
+}
+
+.steps-section {
+  background-color: #fef5e5; /* 淡黄背景 */
+}
+
+.step-item {
+  flex: 0 0 auto; /* 不缩放不换行 */
+  width: 250px;
+  text-align: center;
+  position: relative;
+}
+
+.step-item:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -30px;
+  top: 35%;
+  font-size: 1.5rem;
+  color: #f4a300;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  color: #f4a300;
+}
+
+.step-item,
+.animal-item {
+  min-width: 200px;
+}
+
+/* 自定义PC端导航样式 */
+
+/* ===== 全局轮播图样式 ===== */
+.carousel-inner {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== 缩略图系统 ===== */
+.thumb-scroll {
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.thumb-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -ms-overflow-style: none;
+  padding-bottom: 8px;
+}
+
+.thumb-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumb-scroll-container::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+.thumb-btn {
+  width: 80px;
+  height: 60px;
+  flex: 0 0 auto;
+  margin: 0 8px 0 0;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: none;
+  cursor: pointer;
+}
+
+.thumb-btn:last-child {
+  margin-right: 0;
+}
+
+.thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== 信息表格系统 ===== */
+.list-group-item {
+  border-bottom: 1px solid #dee2e6 !important;
+  padding: 12px;
+  transition: background-color 0.2s;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* ===== 按钮系统 ===== */
+.btn-dark {
+  background-color: #2c3e50 !important;
+  border-color: #2c3e50 !important;
+  transition: all 0.3s;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.btn-dark:hover {
+  background-color: #1a252f !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== 微调优化 ===== */
+.carousel-item {
+  transition: transform 0.6s ease-in-out;
+}
+
+.thumb-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* 卡片间距优化 */
+.card {
+  border-radius: 12px !important;
+  margin-bottom: 1.5rem !important; /* 更紧凑的间距 */
+}
+
+/* 图标固定尺寸 */
+.toggle-icon {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+/* 展开状态图标旋转 */
+[aria-expanded="true"] .toggle-icon {
+  transform: rotate(45deg); /* 加号变叉号 */
+}
+
+/* 箭头旋转动画 */
+.transform-rotate {
+  transition: transform 0.3s ease;
+}
+button[aria-expanded="true"] .transform-rotate {
+  transform: rotate(180deg);
+}
+
+/* 增强可访问性 */
+[data-bs-toggle="collapse"] {
+  cursor: pointer;
+}
+
+/* 答案区域优化 */
+.card-body {
+  padding: 0.5rem 1.25rem !important;
+}
+
+/* 答案区域大内边距 */
+.answer-content {
+  padding: 1rem !important; /* 上下左右统一大边距 */
+  background-color: rgba(255, 255, 255, 0.845); /* 浅黄色背景（可选） */
+}
+
+/* 标题区域内边距 */
+.card-header .p-3 {
+  padding: 1rem !important; /* 标题文字与边框间距 */
+}
+
+/* 间隔样式（问题和答案之间） */
+.custom-hr-top {
+  border: none;
+  border-top: 1px solid #000000; /* 虚线样式 */
+  margin: 0;
+  width: 100%;
+}
+
+/* 灰色信息框 */
+.bg-light {
+  background-color: #eeededb7 !important;
+  padding: 0.75rem 1rem !important; /* 稍小于父容器，增加层次感 */
+}
+
+/* 卡片基础样式 */
+.custom-link {
+  display: inline-block;
+  width: 33.33%;
+  background: #00c1a2;
+  color: white !important;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  margin: -1.5rem 0 1rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.custom-link:hover {
+  background: #00a98e;
+  transform: translateY(-2px);
+}
+
+.object-fit-cover {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.rounded-3 {
+  border-radius: 1rem !important;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body {
+  flex: 1;
+}
+
+/* 确保底部间隔 */
+.mb-4 {
+  margin-bottom: 2rem !important;
+}
+
+/* 邮箱模块 */
+.text-primary {
+  color: #00c1a2 !important;
+} /* 副标题青色 */
+.form-control:focus {
+  border-color: #00c1a2 !important;
+} /* 输入框聚焦颜色 */
+.btn:hover {
+  background: #00a98e !important;
+} /* 按钮悬停效果 */
+
+/* 底部 */
+.custom-footer {
+  background: #f5ad60; /* 背景色 */
+  color: #fff; /* 基础文字颜色 */
+}
+
+/* 导航间距 */
+.mb-6 {
+  margin-bottom: 4rem !important; /* 原mb-5为3rem */
+}
+
+/* 导航链接样式 */
+.footer-link {
+  color: #bdc3c7 !important; /* 浅灰色文字 */
+  text-decoration: none;
+  transition: 0.3s;
+}
+.footer-link:hover {
+  color: #00c1a2 !important; /* 悬停青色 */
+}
+
+/* 订阅模块 */
+.bg-primary {
+  background: #00c1a2 !important; /* 订阅模块青色背景 */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 底部整体背景 */
+.bg-dark {
+  background: #efbc74d1 !important; /* 背景 */
+}
+
+/* 顶部圆角控制 */
+.rounded-top-4 {
+  border-top-left-radius: 1.5rem !important;
+  border-top-right-radius: 1.5rem !important;
+}
+
+/* 确保圆角不被遮挡 */
+.container-fluid {
+  overflow: hidden; /* 重要！防止子元素破坏圆角 */
+}
+
+/* 品牌标识 */
+.btn-switch {
+  background-color: black;
+  color: white;
+}
+
+.single-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  justify-content: space-between;
+}
+
+.description-text {
+  margin-bottom: 1rem;
+}
+
+/* 品牌标识 */
+.brand-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.brand-text {
+  line-height: 1.2;
+  margin-left: 0.8rem;
+}
+
+/* 社交媒体图标 */
+.social-icon {
+  width: 28px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.faq-section {
+  padding: 4rem 1rem;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.faq-header h2 {
+  font-weight: bold;
+}
+
+.faq-button {
+  margin-top: 1rem;
+}
+
+.accordion-item {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-button {
+  background-color: #fff;
+  border: none;
+  font-weight: 500;
+  padding-right: 3rem;
+  position: relative;
+}
+
+.accordion-button::after {
+  content: "+";
+  font-size: 1.25rem;
+  color: #555;
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.2s;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: "×";
+  font-size: 1.5rem;
+}
+
+.accordion-body {
+  padding-top: 0;
+}
+
+.faq-cta {
+  background-color: #f1f1f1;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-cta .btn {
+  font-weight: bold;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.bg-orange {
+  background-color: #f59e0b; /* header-orange 背景 */
+}
+
+/* 整个 footer 的背景色 */
+.footer-section {
+  background-color: #fef1d8;
+}
+
+/* 订阅区域样式 */
+.subscribe-box {
+  background-color: #00385f;
+  border-radius: 1.5rem;
+  margin-top: -1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ========== 📱 (≤767.98px) ========== */
+@media (max-width: 767.98px) {
+  .rounded-top-4 {
+    border-radius: 1rem 1rem 0 0 !important;
+  }
+
+  .bg-primary {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .mobile-hidden {
+    display: none;
+  }
+
+  .step-item {
+    width: 200px;
+  }
+
+  .step-item:not(:last-child)::after {
+    right: -20px;
+  }
+
+  .thumb-scroll {
+    margin-top: -30px;
+  }
+
+  .thumb-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .thumb-btn {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+/* ========== 📟  (768px ~ 1199.98px) ========== */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .col-lg-4 {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .col-lg-4:last-child {
+    margin-bottom: 0;
+  }
+
+  .thumb-scroll {
+    margin-top: -30px;
+  }
+
+  .thumb-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .thumb-btn {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+/* ========== 🖥️  (≥1200px) ========== */
+@media (min-width: 1200px) {
+  .col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .subscribe-row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-social-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-social-row .col-lg-6 {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-info-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-info-row .col-lg-4 {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-info-row .col-lg-4.text-start {
+    justify-content: flex-start;
+  }
+
+  .footer-info-row .col-lg-4.text-end {
+    justify-content: flex-end;
+  }
+
+  .thumb-scroll {
+    margin-top: 16px;
+    position: static;
+    z-index: auto;
+  }
+
+  #mainCarousel {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .navbar-brand {
+    margin-right: 2rem !important;
+  }
+
+  .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #3b82f6 !important;
+  }
+
+  .form-select {
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+  }
+
+  .animal-icon {
+    width: 140px;
+    height: 140px;
+  }
+
+  .animal-label {
+    font-size: 20px;
+  }
+}
